@@ -5,16 +5,15 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Fornecedor {
-	private int cnpj;
+	private String cnpj;
 	private String nome;
 	private String logradouro;
-	private int numero;
+	private String numero;
 	private String cidade;
 	private String estado;
-	private int telefone;
+	private String telefone;
 
-	public Fornecedor(int cnpj, String nome, String logradouro, int numero, String cidade, String estado,
-			int telefone) {
+	public Fornecedor(String cnpj, String nome, String logradouro, String numero, String cidade, String estado, String telefone) {
 		this.cnpj = cnpj;
 		this.nome = nome;
 		this.logradouro = logradouro;
@@ -24,11 +23,11 @@ public class Fornecedor {
 		this.telefone = telefone;
 	}
 
-	public int getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(int cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
@@ -48,11 +47,11 @@ public class Fornecedor {
 		this.logradouro = logradouro;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
@@ -72,11 +71,11 @@ public class Fornecedor {
 		this.estado = estado;
 	}
 
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	
@@ -101,6 +100,24 @@ public class Fornecedor {
 		
 		if (Pattern.matches("^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$", cnpj)) {
 			validacao.put("cnpj", Boolean.TRUE);
+		}
+		if (!nome.isBlank()) {
+			validacao.put("nome", Boolean.TRUE);
+		}
+		if (Pattern.matches("^[0-9]+$", numero)) {
+			validacao.put("numero", Boolean.TRUE);
+		}
+		if (!logradouro.isBlank()) {
+			validacao.put("logradouro", Boolean.TRUE);
+		}
+		if (!cidade.isBlank()) {
+			validacao.put("cidade", Boolean.TRUE);
+		}
+		if (!estado.isBlank()) {
+			validacao.put("estado", Boolean.TRUE);
+		}
+		if (Pattern.matches("^[0-9]+$", telefone)) {
+			validacao.put("telefone", Boolean.TRUE);
 		}
 		
 		return validacao;

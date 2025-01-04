@@ -9,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
 
 public class CadastroGUI extends JFrame{
 	/**
@@ -31,6 +32,7 @@ public class CadastroGUI extends JFrame{
 	private JTextField telField;
 	private JButton btnLimpar;
 	private JButton btnEnviar;
+	private JButton btnDados;
 	
 	public CadastroGUI() {
 		setTitle("Cadastro de Fornecedor");
@@ -114,10 +116,12 @@ public class CadastroGUI extends JFrame{
 		btnLimpar.setBounds(30, 430, 90, 25);
 
 		btnEnviar = new JButton("ENVIAR");
-		btnEnviar.setBounds(130, 430, 90, 25);
-
+		btnEnviar.setBounds(240, 430, 90, 25);
 		
-		setLayout(null);
+		btnDados = new JButton("DADOS");
+		btnDados.setBounds(130, 430, 90, 25);
+		
+		getContentPane().setLayout(null);
 		getContentPane().add(lblCnpj);
 		getContentPane().add(cnpjField);
 		
@@ -140,6 +144,7 @@ public class CadastroGUI extends JFrame{
 		getContentPane().add(telField);
 
 		getContentPane().add(btnLimpar);
+		getContentPane().add(btnDados);
 		getContentPane().add(btnEnviar);
 	}
 	
@@ -194,10 +199,13 @@ public class CadastroGUI extends JFrame{
     }
 	
 	
-	public void limpar(ActionListener ouvirLimpar) { //add ouvinte 'limpar'
+	public void limpar(ActionListener ouvirLimpar) {
 		btnLimpar.addActionListener(ouvirLimpar);
 	}
-	public void enviar(ActionListener ouvirEnviar) { //add ouvinte 'enviar'
+	public void dados(ActionListener ouvirDados) {
+		btnDados.addActionListener(ouvirDados);
+	}
+	public void enviar(ActionListener ouvirEnviar) {
 		btnEnviar.addActionListener(ouvirEnviar);
 	}
 }

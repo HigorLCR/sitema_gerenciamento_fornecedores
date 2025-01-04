@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.swing.JOptionPane;
 
@@ -14,6 +15,7 @@ public class ControllerCadastro {
 	
 	private ArrayList<Fornecedor> fornecedores;
 	private CadastroGUI cadastroView;
+	//private TabelaGUI tabelaView;
 	
 	public ControllerCadastro(CadastroGUI cadView) {
 		this.cadastroView = cadView;
@@ -28,8 +30,63 @@ public class ControllerCadastro {
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getActionCommand() == "ENVIAR") {
-				// fazer validação e cadastrar dados
-			} else if (e.getActionCommand() == "LIMPAR") {
+				String cnpj = cadastroView.getCnpj();
+				String nome = cadastroView.getNome();
+				String numero = cadastroView.getNumero();
+				String logradouro = cadastroView.getLogradouro();
+				String cidade = cadastroView.getCidade();
+				String estado = cadastroView.getEstadoSelecionado();
+				String telefone = cadastroView.getTelefone();
+				
+				Map<String, Boolean> validacao = Fornecedor.validarDados(
+					cnpj, 
+					nome, 
+					numero, 
+					logradouro, 
+					cidade, 
+					estado, 
+					telefone
+				);
+				
+				if(!validacao.get("cnpj").booleanValue())
+					JOptionPane.showMessageDialog(cadastroView, "CNPJ deve ter formato 12.123.123/1234-12.");
+				else if(!validacao.get("nome").booleanValue()) {
+					JOptionPane.showMessageDialog(cadastroView, "'Nome' é um campo obrigatório!");
+				}
+				else if(!validacao.get("numero").booleanValue()) {
+					JOptionPane.showMessageDialog(cadastroView, "Apenas números no campo 'Número'");
+				}
+				else if(!validacao.get("logradouro").booleanValue()) {
+					JOptionPane.showMessageDialog(cadastroView, "'Logradouro' é um campo obrigatório!");
+				}
+				else if(!validacao.get("cidade").booleanValue()) {
+					JOptionPane.showMessageDialog(cadastroView, "'Cidade' é um campo obrigatório!");
+				}
+				else if(!validacao.get("estado").booleanValue()) {
+					JOptionPane.showMessageDialog(cadastroView, "Por favor, selecione um estado!");
+				}
+				else if(!validacao.get("telefone").booleanValue()) {
+					JOptionPane.showMessageDialog(cadastroView, "Apenas números no campo 'Telefone'.");
+				} else {
+					Fornecedor novoFornecedor = new Fornecedor(
+							cnpj,
+							nome,
+							logradouro,
+							numero,
+							cidade,
+							estado,
+							telefone
+					);
+					fornecedores.add(novoFornecedor);
+					
+					JOptionPane.showMessageDialog(cadastroView, "Fornecedor cadastrado com sucesso!");
+				}
+				
+			} else if (e.getActionCommand() == "DADOS")  {
+				cadastroView.dispose();
+				//tabelaView.setVisible(true);
+			}
+			else if (e.getActionCommand() == "LIMPAR") {
 				cadastroView.setCnpj("");
 				cadastroView.setCidade("");
 				cadastroView.setNome("");
