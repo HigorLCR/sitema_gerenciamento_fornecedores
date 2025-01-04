@@ -20,7 +20,7 @@ public class ControllerLogin {
 		this.view = view;
 		
 		this.view.limpar(new OuvinteLogin());
-		this.view.addOuvinteLogin(new OuvinteLogin());
+		this.view.entrar(new OuvinteLogin());
 	}
 	
 	class OuvinteLogin implements ActionListener{
