@@ -1,5 +1,9 @@
 package model;
 
+import java.util.regex.Pattern;
+import java.util.Map;
+import java.util.HashMap;
+
 public class Fornecedor {
 	private int cnpj;
 	private String nome;
@@ -74,5 +78,31 @@ public class Fornecedor {
 
 	public void setTelefone(int telefone) {
 		this.telefone = telefone;
+	}
+	
+	public static Map<String, Boolean> validarDados(
+		String cnpj, 
+		String nome, 
+		String numero,
+		String logradouro,
+		String cidade,
+		String estado,
+		String telefone
+	) {
+		Map<String, Boolean> validacao = new HashMap<>();
+		
+		validacao.put("cnpj", Boolean.FALSE);
+		validacao.put("nome", Boolean.FALSE);
+		validacao.put("numero", Boolean.FALSE);
+		validacao.put("logradouro", Boolean.FALSE);
+		validacao.put("cidade", Boolean.FALSE);
+		validacao.put("estado", Boolean.FALSE);
+		validacao.put("telefone", Boolean.FALSE);
+		
+		if (Pattern.matches("^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$", cnpj)) {
+			validacao.put("cnpj", Boolean.TRUE);
+		}
+		
+		return validacao;
 	}
 }

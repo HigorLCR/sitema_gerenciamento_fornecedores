@@ -27,7 +27,7 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
-	public boolean validacao(String l, String s) {
+	public static boolean validacao(String l, String s) {
 		if(l.equals("user") && s.equals("12345"))
 			return true;
 		else

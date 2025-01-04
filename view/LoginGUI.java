@@ -4,11 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JSplitPane;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -16,6 +13,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class LoginGUI extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblLogin;
 	private JLabel lblSenha;
 	private JTextField loginField;

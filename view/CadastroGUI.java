@@ -8,11 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 public class CadastroGUI extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblCnpj;
 	private JLabel lblNome;
 	private JLabel lblLograd;
@@ -25,7 +27,7 @@ public class CadastroGUI extends JFrame{
 	private JTextField logradField;
 	private JTextField numField;
 	private JTextField cidadeField;
-	private JComboBox cmdEstado;
+	private JComboBox<String> cmdEstado;
 	private JTextField telField;
 	private JButton btnLimpar;
 	private JButton btnEnviar;
@@ -82,8 +84,18 @@ public class CadastroGUI extends JFrame{
 		lblEstado.setFont(fonte);
 		lblEstado.setBounds(30, 283, 300, 22);
 
-		cmdEstado = new JComboBox();
-		cmdEstado.setModel(new DefaultComboBoxModel(new String[] {"", "Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"}));
+		cmdEstado = new JComboBox<String>();
+		cmdEstado.setModel(
+			new DefaultComboBoxModel<String>(
+				new String[] {
+					"", 
+					"Espírito Santo", 
+					"Minas Gerais", 
+					"Rio de Janeiro", 
+					"São Paulo"
+				}
+			)
+		);
 		cmdEstado.setSelectedIndex(0);
 		cmdEstado.setFont(fonte);
 		cmdEstado.setBounds(30, 309, 300, 25);
@@ -131,10 +143,61 @@ public class CadastroGUI extends JFrame{
 		getContentPane().add(btnEnviar);
 	}
 	
+	
+	public String getCnpj() {
+		return cnpjField.getText();
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpjField.setText(cnpj);
+	}
+
+	public String getNome() {
+		return nomeField.getText();
+	}
+	public void setNome(String nome) {
+		this.nomeField.setText(nome);
+	}
+	
+	public String getLogradouro() {
+		return logradField.getText();
+	}
+	public void setLogradouro(String lograd) {
+		this.logradField.setText(lograd);
+	}
+	
+	public String getNumero() {
+		return numField.getText();
+	}
+	public void setNumero(String lograd) {
+		this.numField.setText(lograd);
+	}
+	
+	public String getCidade() {
+		return cidadeField.getText();
+	}
+	public void setCidade(String cidade) {
+		this.cidadeField.setText(cidade);
+	}
+	
+	public String getTelefone() {
+		return telField.getText();
+	}
+	public void setTelefone(String tel) {
+		this.telField.setText(tel);
+	}
+	
+    public String getEstadoSelecionado() {
+        return (String) this.cmdEstado.getSelectedItem();
+    }
+    public void setEstadoSelecionado(int index) {
+        this.cmdEstado.setSelectedIndex(index);
+    }
+	
+	
 	public void limpar(ActionListener ouvirLimpar) { //add ouvinte 'limpar'
 		btnLimpar.addActionListener(ouvirLimpar);
 	}
-	public void entrar(ActionListener ouvirEnviar) { //add ouvinte 'enviar'
+	public void enviar(ActionListener ouvirEnviar) { //add ouvinte 'enviar'
 		btnEnviar.addActionListener(ouvirEnviar);
 	}
 }

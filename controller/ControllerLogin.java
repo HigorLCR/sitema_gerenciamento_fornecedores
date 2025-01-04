@@ -2,25 +2,25 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 import model.Usuario;
+import view.CadastroGUI;
 import view.LoginGUI;
  
 public class ControllerLogin {
 	private Usuario model;
-	private LoginGUI view;
+	private LoginGUI loginView;
+	private CadastroGUI cadastroView;
 	
-	public ControllerLogin(Usuario model, LoginGUI view) {
+	public ControllerLogin(Usuario model, LoginGUI logView, CadastroGUI cadView) {
 		this.model = model;
-		this.view = view;
+		this.loginView = logView;
+		this.cadastroView = cadView;
 		
-		this.view.limpar(new OuvinteLogin());
-		this.view.entrar(new OuvinteLogin());
+		this.loginView.limpar(new OuvinteLogin());
+		this.loginView.entrar(new OuvinteLogin());
 	}
 	
 	class OuvinteLogin implements ActionListener{
@@ -29,19 +29,20 @@ public class ControllerLogin {
 		public void actionPerformed(ActionEvent e) {
 			//BOTÃO ENTRAR
 			if(e.getActionCommand()=="ENTRAR") {
-				if(model.validacao(view.getLogin(), view.getSenha())) {
-					view.dispose();
-					//abrir tela de cadastro
+				if(Usuario.validacao(loginView.getLogin(), loginView.getSenha())) {
+					
+					loginView.dispose();
+					cadastroView.setVisible(true);
 				}
 				else {
-					JOptionPane.showMessageDialog(view, "Login ou senha inválidos!");					
+					JOptionPane.showMessageDialog(loginView, "Login ou senha inválidos!");					
 				}
 			}
 			
 			//BOTÃO LIMPAR
 			else if(e.getActionCommand()=="LIMPAR") {
-				view.setLogin("");
-				view.setSenha("");
+				loginView.setLogin("");
+				loginView.setSenha("");
 			}
 		}
 		
