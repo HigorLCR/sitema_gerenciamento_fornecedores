@@ -82,10 +82,10 @@ public class LoginGUI extends JFrame {
 		this.senhaField.setText(l);
 	}
 	
-	public void limpar(ActionListener ouvirLimpar) {
+	public void limpar(ActionListener ouvirLimpar) { //add ouvinte 'limpar'
 		btnLimpar.addActionListener(ouvirLimpar);		
 	}
-	public void addOuvinteLogin(ActionListener ouvirEntrar) {
+	public void entrar(ActionListener ouvirEntrar) { //add ouvinte 'entrar'
 		btnEntrar.addActionListener(ouvirEntrar);
-	}	
+	}
 }
