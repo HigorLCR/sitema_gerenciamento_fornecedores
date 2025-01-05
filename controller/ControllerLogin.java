@@ -12,12 +12,10 @@ import view.LoginGUI;
 public class ControllerLogin {
 	private Usuario model;
 	private LoginGUI loginView;
-	private CadastroGUI cadastroView;
 	
-	public ControllerLogin(Usuario model, LoginGUI logView, CadastroGUI cadView) {
+	public ControllerLogin(Usuario model, LoginGUI logView) {
 		this.model = model;
 		this.loginView = logView;
-		this.cadastroView = cadView;
 		
 		this.loginView.limpar(new OuvinteLogin());
 		this.loginView.entrar(new OuvinteLogin());
@@ -30,8 +28,10 @@ public class ControllerLogin {
 			//BOTÃO ENTRAR
 			if(e.getActionCommand()=="ENTRAR") {
 				if(Usuario.validacao(loginView.getLogin(), loginView.getSenha())) {
-					
 					loginView.dispose();
+					Fornecedor modelForn = new Fornecedor();
+					CadastroGUI cadastroView = new CadastroGUI();
+					ControllerFornecedor controller = new ControllerFornecedor(modelForn, cadastroView);					
 					cadastroView.setVisible(true);
 				}
 				else {
