@@ -2,3 +2,5 @@
 /ControllerLogin.class
 /ControllerCadastro.class
 /ControllerCadastro$OuvinteCadastro.class
+/ControllerFornecedor$OuvinteCadastro.class
+/ControllerFornecedor.class
