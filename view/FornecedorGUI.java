@@ -278,7 +278,7 @@ public class FornecedorGUI extends JFrame{
 				f.getTelefone()};
 		modelo.addRow(dados);
 		if(!scrollPane.isVisible()){
-			setSize(700,710);
+			setSize(710,710);
 			scrollPane.setVisible(true);
 		}
 	}

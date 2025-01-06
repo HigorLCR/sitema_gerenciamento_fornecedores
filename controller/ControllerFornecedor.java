@@ -80,24 +80,24 @@ public class ControllerFornecedor {
 				);
 				
 				if(!validacao.get("cnpj").booleanValue())
-					JOptionPane.showMessageDialog(cadastroView, "Preencha o CNPJ com 14 dígitos!");
+					JOptionPane.showMessageDialog(cadastroView, "Preencha o CNPJ com 14 dígitos, apenas números", "ERRO", JOptionPane.ERROR_MESSAGE);
 				else if(!validacao.get("nome").booleanValue()) {
-					JOptionPane.showMessageDialog(cadastroView, "'Nome' é um campo obrigatório!");
-				}
-				else if(!validacao.get("numero").booleanValue()) {
-					JOptionPane.showMessageDialog(cadastroView, "Apenas números no campo 'Número'");
+					JOptionPane.showMessageDialog(cadastroView, "'Nome' é um campo obrigatório!", "ERRO", JOptionPane.ERROR_MESSAGE);
 				}
 				else if(!validacao.get("logradouro").booleanValue()) {
-					JOptionPane.showMessageDialog(cadastroView, "'Logradouro' é um campo obrigatório!");
+					JOptionPane.showMessageDialog(cadastroView, "'Logradouro' é um campo obrigatório!", "ERRO", JOptionPane.ERROR_MESSAGE);
+				}
+				else if(!validacao.get("numero").booleanValue()) {
+					JOptionPane.showMessageDialog(cadastroView, "Apenas números no campo 'Número'", "ERRO", JOptionPane.ERROR_MESSAGE);
 				}
 				else if(!validacao.get("cidade").booleanValue()) {
-					JOptionPane.showMessageDialog(cadastroView, "'Cidade' é um campo obrigatório!");
+					JOptionPane.showMessageDialog(cadastroView, "'Cidade' é um campo obrigatório!", "ERRO", JOptionPane.ERROR_MESSAGE);
 				}
 				else if(!validacao.get("estado").booleanValue()) {
-					JOptionPane.showMessageDialog(cadastroView, "Por favor, selecione um estado!");
+					JOptionPane.showMessageDialog(cadastroView, "Por favor, selecione um estado!", "ERRO", JOptionPane.ERROR_MESSAGE);
 				}
 				else if(!validacao.get("telefone").booleanValue()) {
-					JOptionPane.showMessageDialog(cadastroView, "Apenas números no campo 'Telefone'.");
+					JOptionPane.showMessageDialog(cadastroView, "Apenas números no campo 'Telefone'.", "ERRO", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					Fornecedor novoFornecedor = new Fornecedor(cnpj,nome,logradouro,numero,cidade,estado,telefone);

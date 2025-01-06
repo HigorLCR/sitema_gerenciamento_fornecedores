@@ -63,7 +63,7 @@ public class ControllerLogin {
 					cadastroView.setVisible(true);
 				}
 				else {
-					JOptionPane.showMessageDialog(loginView, "Login ou senha inválidos!");					
+					JOptionPane.showMessageDialog(loginView, "Login ou senha inválidos!", "ERRO", JOptionPane.ERROR_MESSAGE);					
 				}
 			}
 			

@@ -38,10 +38,12 @@ public class Usuario {
 	}
 
 	 /**
-	  * Efetua a validação de login e senha inseridos, retorna booleano indicando se validação foi bem sucedida.
+	  * Chama a função isLoginSenha da classe Dados, verificando se o login e senha estão cadastrados,
+	  * retorna booleano indicando se validação foi bem sucedida.
 	  * 
 	  * @param l   Login
 	  * @param s   Senha
+	  * @see 	   Dados
 	  * @return    verdadeiro se o par está cadastrado, senão, falso;
 	  */
 	public boolean validacao(String l, String s) {
