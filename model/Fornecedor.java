@@ -22,6 +22,9 @@ public class Fornecedor {
 		this.estado = estado;
 		this.telefone = telefone;
 	}
+	public Fornecedor() {
+	}
+
 
 	public String getCnpj() {
 		return cnpj;
