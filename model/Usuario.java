@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Um par de login e senha.
+ * 
+ * @author    Bruna Assayag
+ */
 public class Usuario {
 	private String login;
 	private String senha;
@@ -26,9 +31,17 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	public static boolean validacao(String l, String s) {
-		if(l.equals("user") && s.equals("12345"))
+
+	 /**
+	  * Valida o par de login e senha.
+	  * 
+	  * @param l   Login
+	  * @param s   Senha
+	  * @return    verdadeiro se o par está cadastrado, senão, falso;
+	  * @author    Bruna Assayag
+	  */
+	public boolean validacao(String l, String s) {
+		if(Dados.isLoginSenha(l,s))
 			return true;
 		else
 			return false;
