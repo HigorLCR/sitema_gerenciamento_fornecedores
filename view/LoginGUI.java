@@ -2,13 +2,8 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JSplitPane;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -17,10 +12,16 @@ import javax.swing.JButton;
 
 /**
  * Interface gráfica da tela de login.
+ * Classe que possui métodos getters e setters dos estados gerenciados nessa tela (login e senha do usuário).
+ * Possui tamém métodos para associação dos ouvintes para as funções de limpar campos e enviar dados
  * 
  * @author Bruna Assayag
+ * @author Higor Lachini
+ * @author João Pedro
  */
 public class LoginGUI extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	private JLabel lblLogin;
 	private JLabel lblSenha;
 	private JTextField loginField;
@@ -83,10 +84,9 @@ public class LoginGUI extends JFrame {
 	}
 
 	 /**
-	  * Valida o par de login e senha.
+	  * Atribui listeners aos botões de limpar e de entrar no sistema com seu devido comportamento.
 	  * 
 	  * @see ControllerLogin
-	  * @author    Bruna Assayag
 	  */
 	public void limpar(ActionListener ouvirLimpar) { //add ouvinte 'limpar'
 		btnLimpar.addActionListener(ouvirLimpar);		

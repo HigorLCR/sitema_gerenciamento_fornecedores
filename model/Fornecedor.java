@@ -5,7 +5,16 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
+ * Modelo de um Fornecedor no sistema.
+ * Classe que possui métodos construtor, getters e setters para todos os atributos de um fornecedor.
+ * 
+ * Além disso, possui um método estático para validação de todos os dados de um fornecedor que é usado 
+ * no momento de instanciação de um fornecedor ( @see ControllerFornecedor ).
+ * 
+ * 
  * @author Bruna Assayag
+ * @author Higor Lachini
+ * @author João Pedro
  */
 
 public class Fornecedor {
@@ -16,9 +25,20 @@ public class Fornecedor {
 	private String cidade;
 	private String estado;
 	private String telefone;
-
-	public Fornecedor(String cnpj, String nome, String logradouro, String numero, String cidade, String estado,
-			String telefone) {
+	
+	
+	/**
+	 * Constrói um novo fornecedor com os seguintes parâmetros:
+	 * 
+	 * @param cnpj Número de CNPJ do fornecedor
+	 * @param nome Nome do fornecedor
+	 * @param logradouro Logradouro do fornecedor
+	 * @param numero Número do endereço do fornecedor
+	 * @param cidade Cidade do fornecedor
+	 * @param estado Estado do fornecedor
+	 * @param telefone Número de telefone do fornecedor
+	 */
+	public Fornecedor(String cnpj, String nome, String logradouro, String numero, String cidade, String estado, String telefone) {
 		this.cnpj = cnpj;
 		this.nome = nome;
 		this.logradouro = logradouro;
@@ -28,8 +48,7 @@ public class Fornecedor {
 		this.telefone = telefone;
 	}
 
-	public Fornecedor() {
-	}
+	public Fornecedor() {}
 
 	public String getCnpj() { // formato 12.123.123/1234-12
 		return cnpj.charAt(0)+cnpj.charAt(1)+"."+cnpj.charAt(2)+cnpj.charAt(3)+cnpj.charAt(4)+"."+cnpj.charAt(5)+cnpj.charAt(6)+cnpj.charAt(7)+"/"+cnpj.charAt(8)+cnpj.charAt(9)+cnpj.charAt(10)+cnpj.charAt(11)+"."+cnpj.charAt(12)+cnpj.charAt(13);
@@ -101,6 +120,19 @@ public class Fornecedor {
 		this.telefone = telefone;
 	}
 
+	
+	/**
+	 * Efetua a validação de todos os campos atribuindo o sucesso da mesma num HashMap que é retornado.
+	 * 
+	 * @param cnpj Número de CNPJ do fornecedor
+	 * @param nome Nome do fornecedor
+	 * @param numero Número do endereço do fornecedor
+	 * @param logradouro Logradouro do fornecedor
+	 * @param cidade Cidade do fornecedor
+	 * @param estado Estado do fornecedor
+	 * @param telefone Número de telefone do fornecedor
+	 * @return Um HashMap contendo o resultado da validação de cada campo
+	 */
 	public static Map<String, Boolean> validarDados(
 			String cnpj, 
 			String nome, 

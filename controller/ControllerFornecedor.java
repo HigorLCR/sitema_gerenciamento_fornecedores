@@ -9,17 +9,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Fornecedor;
+import model.Usuario;
 import view.FornecedorGUI;
+import view.LoginGUI;
 
 /**
- * Um par de login e senha.
+ * Controlador da tela de fornecedores.
+ * A classe possui um construtor para alocar em seus atributos o modelo de fornecedor 
+ * e a tela de gerenciamento de fornecedores.
  * 
+ * Também possui um método para definição de lógica de eventos da tela de login,
+ * lá é definido o comportamento dos botões LIMPAR e ENVIAR(valida e cadastra novo fornecedor).
+ * 
+ * @see Usuario
+ * @see LoginGUI
  * @see Fornecedor
  * @see FornecedorGUI
+ * @see ControllerFornecedor
+ * 
  * @author Bruna Assayag
+ * @author Higor Lachini
+ * @author João Pedro
  */
 public class ControllerFornecedor {
 	
+	@SuppressWarnings("unused")
 	private Fornecedor model;
 	private FornecedorGUI cadastroView;
 	private ArrayList<Fornecedor> fornecedores;
@@ -33,6 +47,14 @@ public class ControllerFornecedor {
 		this.cadastroView.enviar(new OuvinteCadastro());
 	}
 	
+	/**
+	 * Método que contém a lógica de comportamento dos botões da tela de gerenciamento de fornecedores.
+	 * 
+	 * A opção 'ENVIAR' efetua a validação dos campos de um fornecedor, que caso não sejam válidos retornam uma caixa
+	 * de texto informando ao usuário, e caso contrário, registra um novo fornecedor no sistema.
+	 * 
+	 * A opção 'LIMPAR' limpa todos os campos de cadastro de fornecedor
+	 */
 	class OuvinteCadastro implements ActionListener{
 		
 		@Override

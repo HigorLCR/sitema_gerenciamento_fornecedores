@@ -1,22 +1,27 @@
 package model;
 
 /**
- * Um par de login e senha.
+ * Modelo de um Usuário no sistema.
+ * Classe que possui métodos construtor, getters e setters para todos os atributos de um Usuário.
  * 
- * @author    Bruna Assayag
+ * Além disso, possui um método estático para validação de todos os dados de um fornecedor que é usado 
+ * no momento de instanciação de um usuário ( @see ControllerLogin ).
+ * 
+ * 
+ * @author Bruna Assayag
+ * @author Higor Lachini
+ * @author João Pedro
  */
 public class Usuario {
 	private String login;
 	private String senha;
 
 	public Usuario(String l, String s) {
-		login=l;
-		senha=s;
+		this.login=l;
+		this.senha=s;
 	}
 
-	public Usuario() {
-		// TODO Auto-generated constructor stub
-	}
+	public Usuario() {}
 
 	public String getLogin() {
 		return login;
@@ -33,12 +38,11 @@ public class Usuario {
 	}
 
 	 /**
-	  * Valida o par de login e senha.
+	  * Efetua a validação de login e senha inseridos, retorna booleano indicando se validação foi bem sucedida.
 	  * 
 	  * @param l   Login
 	  * @param s   Senha
 	  * @return    verdadeiro se o par está cadastrado, senão, falso;
-	  * @author    Bruna Assayag
 	  */
 	public boolean validacao(String l, String s) {
 		if(Dados.isLoginSenha(l,s))

@@ -11,17 +11,25 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import model.Fornecedor;
 
+/**
+ * Interface gráfica da tela de fornecedores.
+ * Classe que possui métodos getters e setters dos estados gerenciados nessa tela (campos de cadastro de fornecedor, tabela de fornecedores).
+ * Possui tamém métodos para associação dos ouvintes para as funções de limpar campos e enviar dados.
+ * 
+ * @author Bruna Assayag
+ * @author Higor Lachini
+ * @author João Pedro
+ */
 public class FornecedorGUI extends JFrame{
+
+	private static final long serialVersionUID = 1L;
 	private JLabel lblCnpj;
 	private JLabel lblNome;
 	private JLabel lblLograd;
@@ -34,12 +42,11 @@ public class FornecedorGUI extends JFrame{
 	private JTextField logradField;
 	private JTextField numField;
 	private JTextField cidadeField;
-	private JComboBox cmdEstado;
+	private JComboBox<String> cmdEstado;
 	private JTextField telField;
 	private JButton btnLimpar;
 	private JButton btnEnviar;
 	
-	private JSeparator separator;
 	private JScrollPane scrollPane;
 	private JTable tabela;
 	private DefaultTableModel modelo;
@@ -96,8 +103,18 @@ public class FornecedorGUI extends JFrame{
 		lblEstado.setFont(fonte);
 		lblEstado.setBounds(30, 283, 300, 22);
 
-		cmdEstado = new JComboBox();
-		cmdEstado.setModel(new DefaultComboBoxModel(new String[] {"", "Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"}));
+		cmdEstado = new JComboBox<String>();
+		cmdEstado.setModel(
+			new DefaultComboBoxModel<String>(
+				new String[] {
+					"", 
+					"Espírito Santo", 
+					"Minas Gerais", 
+					"Rio de Janeiro", 
+					"São Paulo"
+				}
+			)
+		);
 		cmdEstado.setSelectedIndex(0);
 		cmdEstado.setFont(fonte);
 		cmdEstado.setBounds(30, 309, 300, 25);
@@ -266,10 +283,10 @@ public class FornecedorGUI extends JFrame{
 		}
 	}
     
-    public void limpar(ActionListener ouvirLimpar) { //add ouvinte 'limpar'
+    public void limpar(ActionListener ouvirLimpar) {
 		btnLimpar.addActionListener(ouvirLimpar);
 	}
-	public void enviar(ActionListener ouvirEnviar) { //add ouvinte 'enviar'
+	public void enviar(ActionListener ouvirEnviar) {
 		btnEnviar.addActionListener(ouvirEnviar);
 	}
 }

@@ -2,20 +2,21 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
-import controller.ControllerLogin.OuvinteLogin;
 import model.Fornecedor;
 import model.Usuario;
 import view.FornecedorGUI;
 import view.LoginGUI;
+
  
 /**
- * Controle da tela de login.
+ * Controlador da tela de login.
+ * A classe possui um construtor para alocar em seus atributos o modelo de usuário e a tela de login.
+ * 
+ * Também possui um método para definição de lógica de eventos da tela de login,
+ * lá é definido o comportamento dos botões LIMPAR e ENVIAR.
  * 
  * @see Usuario
  * @see LoginGUI
@@ -24,7 +25,8 @@ import view.LoginGUI;
  * @see ControllerFornecedor
  * 
  * @author Bruna Assayag
- * @author Heitor ???
+ * @author Higor Lachini
+ * @author João Pedro
  */
 
 public class ControllerLogin {
@@ -39,6 +41,13 @@ public class ControllerLogin {
 		this.loginView.entrar(new OuvinteLogin());
 	}
 	
+	/**
+	 * Método que contém a lógica de comportamento dos botões da tela de gerenciamento de fornecedores.
+	 * 
+	 * A opção 'ENVIAR' efetua a validação dos campos de login e senha e entra no sistema caso estejam corretos.
+	 * 
+	 * A opção 'LIMPAR' limpa todos os campos da tela de login.
+	 */
 	class OuvinteLogin implements ActionListener{
 		
 		@Override
@@ -49,7 +58,8 @@ public class ControllerLogin {
 					loginView.dispose();
 					Fornecedor modelForn = new Fornecedor();
 					FornecedorGUI cadastroView = new FornecedorGUI();
-					ControllerFornecedor controller = new ControllerFornecedor(modelForn, cadastroView);
+					
+					new ControllerFornecedor(modelForn, cadastroView);
 					cadastroView.setVisible(true);
 				}
 				else {
